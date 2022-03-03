@@ -13,74 +13,56 @@
 
 <body>
     <header>
-        <div class="col">
+        <div>
             <h1 class="p-2">Weather Dashboard</h1>
         </div>
     </header>
-    <!-- <div class="container">
-        <div class="row justify-content-start">
-            <h2 class="m-2 col-4">Search for a city:</h2>
-            search d-flex flex-column col-3 m-
-            <input class="" type="text">
-            <button class="col-4">Search</button>
-            <hr>
-            <div class="today-weather col-4"></div>
-        </div>
-    </div> -->
-    <div class="container">
-        <div class="col">
-            <h2>Search</h2>
-            <input type="text">
-            <button>Search</button>
-        </div>
-        <div class="col">
-            <div class="today-weather"></div>
+
+    <div class="container-fluid" style="max-width: 1400px;">
+        <div class="row">
+            <aside class="col-lg-3">
+                <h2 class="mt-1 form-label">Search</h2>
+                <form id="search-form" class="form">
+                    <div class="form-inline form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-input weather-search" id="search-input"
+                                placeholder="San Diego" aria-controls="today forecast">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary search-button" id="search-button"
+                                    aria-label="submit search">Submit</button>
+                                <hr class="hr weather-hr" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="list-group" id="search-history"></div>
+            </aside>
+            <div class="col-lg-9">
+                <section id="today-weather" class="mt-3"></section>
+                <section id="container-day" class="row mt-3"></section>
+            </div>
         </div>
     </div>
 
     <div class="container-five-day">
-        <div class= "five-day">
-            <div class="date">Date</div>
-            <img src="" alt="">
-            <div class="temp">temp</div>
-            <div class="wind">wind</div>
-            <div class="humidity">humidity</div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Date</h5>
+                <p><img src="" alt="">icon image</p>
+                <p class="card-text">Temp</p>
+                <p class="card-text">Wind</p>
+                <p class="card-text">Humidity</p>
+            </div>
         </div>
-        <div class=" five-day">
-            <div class="date">Date</div>
-            <img src="" alt="">
-            <div class="temp">temp</div>
-            <div class="wind">wind</div>
-            <div class="humidity">humidity</div>
-        </div>
-        <div class=" five-day">
-            <div class="date">Date</div>
-            <img src="" alt="">
-            <div class="temp">temp</div>
-            <div class="wind">wind</div>
-            <div class="humidity">humidity</div>
-        </div>
-        <div class=" five-day">
-            <div class="date">Date</div>
-            <img src="" alt="">
-            <div class="temp">temp</div>
-            <div class="wind">wind</div>
-            <div class="humidity">humidity</div>
-        </div>
-        <div class=" five-day">
-            <div class="date">Date</div>
-            <img src="" alt="">
-            <div class="temp">temp</div>
-            <div class="wind">wind</div>
-            <div class="humidity">humidity</div>
-        </div>
-    </div>
 
 
 
 
 
-    <script src="script.js"></script>
+
+
+
+        <script src="script.js"></script>
 </body>
 
 </html>
