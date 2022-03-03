@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    background-color: blueviolet;
+    height: 70px;
+    font-size: 70px;
+    color: black;
+}
+.wrapper-1{
+    border: 3px solid black;
+}
+input{
+    border: 4px solid black;
+}
+button{
+    background-color: blueviolet;
+    color: aliceblue;
+}
+
+.today-weather{
+    border: 5px solid black;
+    height: 200px;
+    max-width: 600px;
+   margin: 10px;
+}
+.five-day{
+    border: 4px solid black;
+    margin: 10px;
+    height: 300px;
+    flex: 50%;
+    margin-top: 50px;
+}
+.container-five-day{
+    display: flex;
+}
