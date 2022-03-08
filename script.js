@@ -5,14 +5,11 @@ let submitBtn = document.querySelector("#search-button");
 let url = "http://api.openweathermap.org";
 let currentWeatherBox = document.querySelector("#today-weather");
 let containerFiveDay = document.querySelector("#container-day");
-
-
-
-// dom element references
+let cityArray = [];
 
 // function display search history
 function renderSearchHistory() {
-
+    localStorage.setItem("search")
 }
 
 // function update hisoty in local storage and update displayed history
@@ -27,7 +24,7 @@ function initSearchHistory() {
 
 // function display current weather from api
 function renderCurrentWeather(city, weather, timezone) {
-    // let date = dayjs().tz(timezone).format("M/D/YYYY");
+    let date = moment("YYYY-MM-DD");
     let icon = weather.weather[0].icon;
     let image = "http://openweathermap.org/img/w/" + icon + ".png";
     let temp = weather.temp;
@@ -35,23 +32,21 @@ function renderCurrentWeather(city, weather, timezone) {
     let humidity = weather.humidity;
     let uvi = weather.uvi;
 
-
-    // create card listing prpoerties above bootstrp
     let card = document.createElement("div");
     let cardCity = document.createElement("h3");
-    // let cardDate = document.createElement("h5");
+    let cardDate = document.createElement("h5");
     let cardImg = document.createElement("img");
     let cardTemp = document.createElement("p");
     let cardWind = document.createElement("p");
     let cardHumidity = document.createElement("p");
     let cardUvi = document.createElement("p");
 
-    // cardDate.textContent = date;
+    cardDate.textContent = date;
     cardCity.textContent = city;
-    cardTemp.textContent = temp;
-    cardWind.textContent = wind;
-    cardHumidity.textContent = humidity;
-    cardUvi.textContent = uvi;
+    cardTemp.textContent = "Temp: " + temp + "\xB0F";
+    cardWind.textContent = "Wind: " + wind + " MPH";
+    cardHumidity.textContent = "Humidity: " + humidity + " %";
+    cardUvi.textContent = "UV: " + uvi;
 
     cardImg.setAttribute("src", "http://openweathermap.org/img/w/" + icon + ".png")
 
@@ -60,7 +55,7 @@ function renderCurrentWeather(city, weather, timezone) {
 
 
 }
-//  function display forecast given an object from weather api
+// function display forecast given an object from weather api
 // daily forecast
 function renderForecast(daily, timezone) {
     for (let i = 1; i < 6; i++) {
@@ -78,20 +73,20 @@ function renderForecast(daily, timezone) {
         let cardTemp = document.createElement("p");
         let cardWind = document.createElement("p");
         let cardHumidity = document.createElement("p");
-        
 
-        cardDate.textContent = date;
-        cardTemp.textContent = temp;
-        cardWind.textContent = wind;
-        cardHumidity.textContent = humidity;
-        
+
+        cardDate.textContent = moment.unix(date).format("MM/DD/YYYY");
+        cardTemp.textContent = "Temp: " + temp + " \xB0F";
+        cardWind.textContent = "Wind: " + wind + " MPH";
+        cardHumidity.textContent = "Humidity: " + humidity + "%";
+
 
         cardImg.setAttribute("src", image);
 
         card.append(cardDate, cardImg, cardTemp, cardWind, cardHumidity);
         containerFiveDay.append(card);
 
-        
+
     }
 }
 
@@ -124,7 +119,6 @@ function fetchWeather(location) {
 }
 
 function fetchCoords(search) {
-    console.log("fetchCoords")
     let apiURL = `${url}/geo/1.0/direct?q=${search}&limit=5&appid=${apiKey}`;
     fetch(apiURL)
         .then(function (res) {
@@ -146,8 +140,6 @@ function fetchCoords(search) {
 // event listener functions
 function handleSearchFormInit(event) {
     event.preventDefault();
-    console.log("handleSearchFormInit")
-    console.log(searchInput)
     if (!searchInput.value) {
         return;
     }
@@ -158,7 +150,6 @@ function handleSearchFormInit(event) {
 function handleSearchHistoryClick() {
 
 }
-console.log(submitBtn)
 // create two submit buttons
 submitBtn.addEventListener("click", handleSearchFormInit)
 // search button and history button
